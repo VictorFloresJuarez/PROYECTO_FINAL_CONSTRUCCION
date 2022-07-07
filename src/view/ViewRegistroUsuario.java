@@ -4,12 +4,15 @@
  */
 package view;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author victo
  */
 public class ViewRegistroUsuario extends javax.swing.JFrame {
-
+    DefaultTableModel model = new DefaultTableModel();
     /**
      * Creates new form ViewRegistroUsuario
      */
@@ -40,11 +43,11 @@ public class ViewRegistroUsuario extends javax.swing.JFrame {
         buttonGuardar = new javax.swing.JButton();
         buttonActualizar = new javax.swing.JButton();
         buttonEliminar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        listaUsuarios = new javax.swing.JList<>();
         buttonListarUsuarios = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         txtUsuarioModificarEliminar = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablaUsuarios = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -95,16 +98,37 @@ public class ViewRegistroUsuario extends javax.swing.JFrame {
         buttonEliminar.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         buttonEliminar.setText("Eliminar");
 
-        listaUsuarios.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
-        jScrollPane1.setViewportView(listaUsuarios);
-
         buttonListarUsuarios.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         buttonListarUsuarios.setText("Listar usuarios registrados");
+        buttonListarUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonListarUsuariosActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         jLabel7.setText("Usuario a modificar/Eliminar:");
 
         txtUsuarioModificarEliminar.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+
+        tablaUsuarios.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        tablaUsuarios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre de usuario", "Nombre"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tablaUsuarios);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -141,27 +165,26 @@ public class ViewRegistroUsuario extends javax.swing.JFrame {
                             .addComponent(txtCURP)
                             .addComponent(txtNombreDeUsuario)
                             .addComponent(txtContrasenia))))
-                .addGap(91, 91, 91)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonListarUsuarios, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap(66, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(buttonListarUsuarios)
+                        .addGap(123, 123, 123))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(buttonListarUsuarios))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(txtUsuarioModificarEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(txtUsuarioModificarEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonListarUsuarios))
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -188,8 +211,8 @@ public class ViewRegistroUsuario extends javax.swing.JFrame {
                             .addComponent(buttonGuardar)
                             .addComponent(buttonActualizar)
                             .addComponent(buttonEliminar)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(76, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         pack();
@@ -203,6 +226,13 @@ public class ViewRegistroUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonGuardarActionPerformed
 
+    private void buttonListarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonListarUsuariosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonListarUsuariosActionPerformed
+
+    public void getListaUsuarios(ArrayList<String> listaNombreUsuarios, ArrayList<String> listaNombres){
+        model.addColumn("Nombre de usuario", ""); //PENDIENTE VER TODOS LOS USUARIOS
+    }
     /**
      * @param args the command line arguments
      */
@@ -250,8 +280,8 @@ public class ViewRegistroUsuario extends javax.swing.JFrame {
     public javax.swing.JLabel jLabel5;
     public javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JList<String> listaUsuarios;
+    private javax.swing.JScrollPane jScrollPane2;
+    public javax.swing.JTable tablaUsuarios;
     public javax.swing.JTextField txtApellido;
     public javax.swing.JTextField txtCURP;
     public javax.swing.JTextField txtContrasenia;

@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import model.Usuario;
 import model.Usuarios;
 import view.ViewRegistroUsuario;
@@ -18,9 +19,10 @@ import view.ViewRegistroUsuario;
  */
 public class ControlUsuarios implements ActionListener {
 
-    DefaultListModel model = new DefaultListModel();
+    DefaultTableModel model;
     private Usuarios usuarios;
     private ViewRegistroUsuario vistaUsuarios;
+    
 
     public ControlUsuarios(Usuarios usuarios, ViewRegistroUsuario vistaUsuarios) {
         this.usuarios = usuarios;
@@ -28,6 +30,7 @@ public class ControlUsuarios implements ActionListener {
         this.vistaUsuarios.buttonActualizar.addActionListener(this);
         this.vistaUsuarios.buttonEliminar.addActionListener(this);
         this.vistaUsuarios.buttonGuardar.addActionListener(this);
+        this.model = new DefaultTableModel();
     }
 
     @Override
@@ -66,7 +69,7 @@ public class ControlUsuarios implements ActionListener {
                     this.usuarios.eliminarUsuario(usuarioPorEliminar);
                     JOptionPane.showMessageDialog(null, "Usuario eliminado exitosamente.");
                 } else {
-                    JOptionPane.showMessageDialog(null, "Contraseña incorrecta o el usuario no existe");
+                    JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario inexistente");
@@ -87,15 +90,15 @@ public class ControlUsuarios implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Necesita ingresar TODOS los campos");
             }
         }
-
-        /*if (botonPresionado.getSource() == this.vistaUsuarios.buttonListarUsuarios) {
+        
+        /*
+        if (botonPresionado.getSource() == this.vistaUsuarios.buttonListarUsuarios) {
             Boolean listaEstaVacia = this.usuarios.getUsuarios().isEmpty();
             if (!listaEstaVacia) {
-                this.model.removeAllElements();
                 for (Usuario usuarioActual : this.usuarios.getUsuarios()) {
-                    this.model.addElement(usuarioActual.getNombre());
+                    model.addRow(this.usuarios.getUsuarios().toArray());
                 }
-                this.vistaUsuarios.listaUsuarios.setModel(model);
+                this.vistaUsuarios.tablaUsuarios.setModel(this.model);
             }
         }*/
 
