@@ -9,7 +9,7 @@ package model;
  * @author victo
  */
 public class ObraTeatral {
-
+    
     private String nombre;
     private String genero;
     private String resumen;
@@ -18,11 +18,11 @@ public class ObraTeatral {
     private Usuario segundoActorPrincipal;
     private float precioDelBoleto;
     
-    public ObraTeatral(){
+    public ObraTeatral() {
         
     }
     
-    public ObraTeatral(String nombre, String genero, String resumen, int duracionEnMin, Usuario primerActorPrincipal, Usuario segundoActorPrincipal, float precioDelBoleto){
+    public ObraTeatral(String nombre, String genero, String resumen, int duracionEnMin, Usuario primerActorPrincipal, Usuario segundoActorPrincipal, float precioDelBoleto) {
         this.nombre = nombre;
         this.genero = genero;
         this.resumen = resumen;
@@ -32,7 +32,7 @@ public class ObraTeatral {
         this.precioDelBoleto = precioDelBoleto;
     }
     
-    public void modificarObra(String nuevoNombre, String nuevoGenero, String nuevoResumen, int nuevaDuracionEnMin, Usuario nuevoPrimerActorPrincipal, Usuario nuevoSegundoActorPrincipal, float nuevoPrecioDelBoleto){
+    public void modificarObra(String nuevoNombre, String nuevoGenero, String nuevoResumen, int nuevaDuracionEnMin, Usuario nuevoPrimerActorPrincipal, Usuario nuevoSegundoActorPrincipal, float nuevoPrecioDelBoleto) {
         this.nombre = nuevoNombre;
         this.genero = nuevoGenero;
         this.resumen = nuevoResumen;
@@ -41,6 +41,7 @@ public class ObraTeatral {
         this.segundoActorPrincipal = nuevoSegundoActorPrincipal;
         this.precioDelBoleto = nuevoPrecioDelBoleto;
     }
+
     /**
      * @return the nombre
      */
@@ -138,7 +139,7 @@ public class ObraTeatral {
     public void setPrecioDelBoleto(float precioDelBoleto) {
         this.precioDelBoleto = precioDelBoleto;
     }
-
+    
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -153,7 +154,10 @@ public class ObraTeatral {
         sb.append('}');
         return sb.toString();
     }
-
     
-
+    public String getTextoObraTeatral() {
+        String textoObraTeatral = "Nombre:      " + this.nombre + ",        genero:     " + this.genero + ",   duracion en min     " + String.valueOf(this.duracionEnMin) + ",     precio del boleto:      " + String.valueOf(this.precioDelBoleto);
+        return textoObraTeatral;
+    }
+    
 }

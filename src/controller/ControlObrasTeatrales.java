@@ -6,7 +6,10 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import model.ObraTeatral;
 import model.ObrasTeatrales;
 import model.Usuario;
@@ -18,6 +21,7 @@ import view.ViewObrasTeatrales;
  */
 public class ControlObrasTeatrales implements ActionListener {
 
+    DefaultTableModel model = new DefaultTableModel();
     private ObrasTeatrales obrasTeatrales;
     private ViewObrasTeatrales vistaObrasTeatrales;
 
@@ -27,6 +31,7 @@ public class ControlObrasTeatrales implements ActionListener {
         this.vistaObrasTeatrales.buttonActualizarObra.addActionListener(this);
         this.vistaObrasTeatrales.buttonAgregarObra.addActionListener(this);
         this.vistaObrasTeatrales.buttonEliminar.addActionListener(this);
+        this.model = new DefaultTableModel();
     }
 
     @Override
@@ -66,7 +71,9 @@ public class ControlObrasTeatrales implements ActionListener {
                 Boolean obraExiste = obraPorCambiar != null;
                 if (obraExiste) {
                     this.obrasTeatrales.modificarObra(obraAModificar, nuevoNombreObra, nuevoGenero, nuevoResumen, nuevaDuracionEnMin, primerActor, segundoActor, precioDelBoleto);
-                    JOptionPane.showMessageDialog(null, "Obra modificada exitosamente!");
+                    ObraTeatral obraModificada = this.obrasTeatrales.getObraTeatral(nuevoNombreObra);
+                    String textoObra = obraModificada.getTextoObraTeatral();
+                    JOptionPane.showMessageDialog(null, "Obra modificada exitosamente!          " + textoObra);
                 } else {
                     JOptionPane.showMessageDialog(null, "La obra no existe");
                 }
@@ -80,8 +87,10 @@ public class ControlObrasTeatrales implements ActionListener {
             ObraTeatral obraTeatral = this.obrasTeatrales.getObraTeatral(obraAEliminar);
             Boolean obraExiste = obraTeatral != null;
             if (obraExiste) {
+                ObraTeatral obraTeatralAEliminar = this.obrasTeatrales.getObraTeatral(obraAEliminar);
+                String textoObraAEliminar = obraTeatralAEliminar.getTextoObraTeatral();
                 this.obrasTeatrales.eliminarObra(obraAEliminar);
-                JOptionPane.showMessageDialog(null, "Obra eliminada correctamente");
+                JOptionPane.showMessageDialog(null, "Obra eliminada correctamente:              " + textoObraAEliminar);
             } else {
                 JOptionPane.showMessageDialog(null, "La obra no existe");
             }
@@ -118,10 +127,29 @@ public class ControlObrasTeatrales implements ActionListener {
                     && (!nuevoNombrePrimerActor.isEmpty()) && (!nuevoNombreDeUsuarioSegundoActor.isEmpty()) && (!nuevoApellidoPrimerActor.isEmpty()) && (!nuevoApellidoSegundoActor.isEmpty()) && (!nuevaCURPPrimerActor.isEmpty()) && (!nuevaCURPSegundoActor.isEmpty());
             if (nuevosParametrosValidos) {
                 this.obrasTeatrales.agregarObra(nuevoNombreObra, nuevoGenero, nuevoResumen, nuevaDuracionEnMin, primerActor, segundoActor, precioDelBoleto);
-                JOptionPane.showMessageDialog(null, "Obra creada exitosamente");
+                ObraTeatral obraTeatralAgregar = this.obrasTeatrales.getObraTeatral(nuevoNombreObra);
+                String textoObraAgregada = obraTeatralAgregar.getTextoObraTeatral();
+                JOptionPane.showMessageDialog(null, "Obra creada exitosamente                   " + textoObraAgregada);
+                listar(this.vistaObrasTeatrales.tablaObras);
             } else {
                 JOptionPane.showMessageDialog(null, "Debe ingresar TODOS los datos");
             }
         }
+
+    }
+
+    public void listar(JTable tabla) {
+        Object[] object = new Object[4];
+        ArrayList<ObraTeatral> lista = this.obrasTeatrales.getObrasTeatrales();
+        ObraTeatral obraActual = null;
+        for (int i = 0; i < lista.size(); i++) {
+            obraActual = lista.get(i);
+            object[0] = obraActual.getNombre();
+            object[1] = obraActual.getGenero();
+            object[2] = obraActual.getResumen();
+            object[3] = "2";
+            this.model.addRow(object);
+        }
+        this.vistaObrasTeatrales.tablaObras.setModel(this.model);
     }
 }

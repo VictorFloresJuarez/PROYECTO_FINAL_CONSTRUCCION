@@ -64,7 +64,6 @@ public class ViewObrasTeatrales extends javax.swing.JFrame {
         buttonEliminar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaObras = new javax.swing.JTable();
-        buttonListarObras = new javax.swing.JButton();
         jLabel254 = new javax.swing.JLabel();
         txtObraAModificarEliminar = new javax.swing.JTextField();
 
@@ -187,10 +186,8 @@ public class ViewObrasTeatrales extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        tablaObras.setToolTipText("");
         jScrollPane1.setViewportView(tablaObras);
-
-        buttonListarObras.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        buttonListarObras.setText("Listar obras teatrales");
 
         jLabel254.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         jLabel254.setText("Obra a modificar/eliminar:");
@@ -225,8 +222,7 @@ public class ViewObrasTeatrales extends javax.swing.JFrame {
                                 .addComponent(jLabel254)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtObraAModificarEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(buttonListarObras, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -308,7 +304,6 @@ public class ViewObrasTeatrales extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(buttonListarObras)
                             .addComponent(jLabel254)
                             .addComponent(txtObraAModificarEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
@@ -381,42 +376,13 @@ public class ViewObrasTeatrales extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewObrasTeatrales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewObrasTeatrales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewObrasTeatrales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewObrasTeatrales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ViewObrasTeatrales().setVisible(true);
-            }
-        });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton buttonActualizarObra;
     public javax.swing.JButton buttonAgregarObra;
     public javax.swing.JButton buttonEliminar;
-    public javax.swing.JButton buttonListarObras;
     public javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel10;
     public javax.swing.JLabel jLabel11;
@@ -437,7 +403,7 @@ public class ViewObrasTeatrales extends javax.swing.JFrame {
     public javax.swing.JLabel jLabel8;
     public javax.swing.JLabel jLabel9;
     public javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tablaObras;
+    public javax.swing.JTable tablaObras;
     public javax.swing.JTextField txtApellidoPrimerActor;
     public javax.swing.JTextField txtApellidoSegundoActor;
     public javax.swing.JTextField txtCURPPrimerActor;
