@@ -9,8 +9,8 @@ import model.Usuarios;
 import view.ViewRegistroUsuario;
 
 /**
- *
- * @author victo
+ *Clase para testear el controlador ControlUsuarios. Para ver si muestra los datos correctos en pantalla.
+ * @author Víctor Flores Juárez
  */
 public class TestControlUsuarios {
     public static void main(String[] args) {

@@ -8,8 +8,8 @@ import model.Usuario;
 import model.Usuarios;
 
 /**
- *
- * @author victo
+  *Clase para testear la clase Usuarios. Para ver si muestra los datos correctos en consola.
+ * @author Víctor Flores Juárez
  */
 public class TestUsuarios {
 

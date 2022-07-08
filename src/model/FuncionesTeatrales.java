@@ -9,8 +9,8 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 
 /**
- *
- * @author victo
+ *Clase FuncionesTeatrales, que representa la entidad de TODAS las funciones que se registran en el teatro.
+ * @author Víctor Flores Juárez
  */
 public class FuncionesTeatrales {
 
@@ -33,7 +33,13 @@ public class FuncionesTeatrales {
     public void setFuncionesTeatrales(ArrayList<FuncionTeatral> funcionesTeatrales) {
         this.funcionesTeatrales = funcionesTeatrales;
     }
-
+    
+    /**
+     * Función para obtener todas las funciones registradas en un período de tiempo.
+     * @param nombreDeLaObra
+     * @param fechaDeLaObra
+     * @return funcionTeatralActual
+     */
     public FuncionTeatral getFuncionEspecifica(String nombreDeLaObra, LocalDate fechaDeLaObra) {
         Boolean esLaFuncionEspecifica;
         for (FuncionTeatral funcionTeatralActual : this.funcionesTeatrales) {
@@ -45,16 +51,20 @@ public class FuncionesTeatrales {
         
         return null;
     }
-
+    
+    /**
+     * Función que no retorna ningún valor que agrega una nueva función al ArrayList de funciones de la clase.
+     * @param obraTeatral
+     * @param fechaPresentacion
+     * @param horaPresentacion 
+     */
     public void agregarFuncion(ObraTeatral obraTeatral, LocalDate fechaPresentacion, LocalTime horaPresentacion) {
         FuncionTeatral nuevaFuncionTeatral = new FuncionTeatral(obraTeatral, fechaPresentacion, horaPresentacion);
         this.funcionesTeatrales.add(nuevaFuncionTeatral);
     }
 
     /**
-     * Lo que modifica esta funcion es la fecha o la hora de la función,
-     * asegurándose que sea la función correcta
-     *
+     * Lo que modifica esta funcion es la fecha o la hora de la función, no la obra teatral.
      * @param funcionAModificar
      * @param obraTeatral
      * @param fechaPresentacion
@@ -71,7 +81,11 @@ public class FuncionesTeatrales {
             }
         }
     }
-
+    
+    /**
+     * Función que elimina una función existente dado el nombre de una función a eliminar.
+     * @param funcionAEliminar 
+     */
     public void eliminarFuncion(String funcionAEliminar) {
         Boolean esLaObra;
         for (FuncionTeatral funcionTeatral : this.funcionesTeatrales) {
@@ -82,6 +96,9 @@ public class FuncionesTeatrales {
         }
     }
 
+    /**
+     * Función que no retorna ningú valor, sirve para imprimir todas las funciones existentes, hasta el momento de su llamada, en consola.
+     */
     public void imprimirFunciones() {
         for (FuncionTeatral funcionTeatral : this.funcionesTeatrales) {
             System.out.println(funcionTeatral.toString());

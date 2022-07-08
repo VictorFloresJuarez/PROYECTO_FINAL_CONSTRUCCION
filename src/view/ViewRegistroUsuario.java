@@ -10,8 +10,8 @@ import javax.swing.table.DefaultTableModel;
 import model.Usuarios;
 
 /**
- *
- * @author victo
+ *Vista para la clase Usuarios, la interacción entre estas se da mediante ControlUsuarios. Por lo que el código esta clase no debe ser modificada bajo ninguna circunstancia.
+ * @author Víctor Flores Juárez
  */
 public class ViewRegistroUsuario extends javax.swing.JFrame {
     /**

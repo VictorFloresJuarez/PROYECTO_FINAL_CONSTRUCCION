@@ -5,8 +5,8 @@
 package model;
 
 /**
- *
- * @author victo
+ *Clase ObraTeatral, que representa la entidad de cada obra teatral registrada en el teatro.
+ * @author Víctor Flores Juárez
  */
 public class ObraTeatral {
     
@@ -22,6 +22,16 @@ public class ObraTeatral {
         
     }
     
+    /**
+     * Constructor de la clase ObraTeatral. Instancia un objeto de dicha clase recibiendo como parámetro TODOS los argumentos de la clase.
+     * @param nombre
+     * @param genero
+     * @param resumen
+     * @param duracionEnMin
+     * @param primerActorPrincipal
+     * @param segundoActorPrincipal
+     * @param precioDelBoleto 
+     */
     public ObraTeatral(String nombre, String genero, String resumen, int duracionEnMin, Usuario primerActorPrincipal, Usuario segundoActorPrincipal, float precioDelBoleto) {
         this.nombre = nombre;
         this.genero = genero;
@@ -32,6 +42,16 @@ public class ObraTeatral {
         this.precioDelBoleto = precioDelBoleto;
     }
     
+    /**
+     * Función que modifica los atributos de una instancia de la clase ObraTeatral. Es el método que debe utilizarse para modificar algún parámetro de la clase.
+     * @param nuevoNombre
+     * @param nuevoGenero
+     * @param nuevoResumen
+     * @param nuevaDuracionEnMin
+     * @param nuevoPrimerActorPrincipal
+     * @param nuevoSegundoActorPrincipal
+     * @param nuevoPrecioDelBoleto 
+     */
     public void modificarObra(String nuevoNombre, String nuevoGenero, String nuevoResumen, int nuevaDuracionEnMin, Usuario nuevoPrimerActorPrincipal, Usuario nuevoSegundoActorPrincipal, float nuevoPrecioDelBoleto) {
         this.nombre = nuevoNombre;
         this.genero = nuevoGenero;
@@ -43,90 +63,62 @@ public class ObraTeatral {
     }
 
     /**
+     * Función que retorna un objeto de tipo String que contiene el nombre de la obra.
      * @return the nombre
      */
     public String getNombre() {
         return nombre;
     }
 
-    /**
-     * @param nombre the nombre to set
-     */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 
     /**
+     * Función que devuelve un objeto String que contiene el género de la obra teatral
      * @return the genero
      */
     public String getGenero() {
         return genero;
     }
 
-    /**
-     * @param genero the genero to set
-     */
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
 
     /**
+     * Función que devuelve un objeto String que contiene el resumen de la obra teatral.
      * @return the resumen
      */
     public String getResumen() {
         return resumen;
     }
 
-    /**
-     * @param resumen the resumen to set
-     */
-    public void setResumen(String resumen) {
-        this.resumen = resumen;
-    }
 
     /**
+     * Función que devuelve un entero que representa la duración de la obra en minutos.
      * @return the duracionEnMin
      */
     public int getDuracionEnMin() {
         return duracionEnMin;
     }
 
-    /**
-     * @param duracionEnMin the duracionEnMin to set
-     */
-    public void setDuracionEnMin(int duracionEnMin) {
-        this.duracionEnMin = duracionEnMin;
-    }
 
     /**
+     * Función que devuelve un objeto de tipo Usuario que representa al primer actor principal.
      * @return the primerActorPrincipal
      */
     public Usuario getPrimerActorPrincipal() {
         return primerActorPrincipal;
     }
 
-    /**
-     * @param primerActorPrincipal the primerActorPrincipal to set
-     */
-    public void setPrimerActorPrincipal(Usuario primerActorPrincipal) {
-        this.primerActorPrincipal = primerActorPrincipal;
-    }
+
 
     /**
+     * Función que devuelve un objeto de tipo Usuario que representa un al segundo actor principal.
      * @return the segundoActorPrincipal
      */
     public Usuario getSegundoActorPrincipal() {
         return segundoActorPrincipal;
     }
 
-    /**
-     * @param segundoActorPrincipal the segundoActorPrincipal to set
-     */
-    public void setSegundoActorPrincipal(Usuario segundoActorPrincipal) {
-        this.segundoActorPrincipal = segundoActorPrincipal;
-    }
 
     /**
+     * Función que devuelve un flotante que representa el precio del boleto.
      * @return the precioDelBoleto
      */
     public float getPrecioDelBoleto() {
@@ -134,12 +126,9 @@ public class ObraTeatral {
     }
 
     /**
-     * @param precioDelBoleto the precioDelBoleto to set
+     * Función que imprime los atributos de una ObraTeatral en consola.
+     * @return 
      */
-    public void setPrecioDelBoleto(float precioDelBoleto) {
-        this.precioDelBoleto = precioDelBoleto;
-    }
-    
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -155,6 +144,10 @@ public class ObraTeatral {
         return sb.toString();
     }
     
+    /**
+     * Función que devuelve un String que contiene los atributos más importantes de la obra.
+     * @return 
+     */
     public String getTextoObraTeatral() {
         String textoObraTeatral = "Nombre:      " + this.nombre + ",        genero:     " + this.genero + ",   duracion en min     " + String.valueOf(this.duracionEnMin) + ",     precio del boleto:      " + String.valueOf(this.precioDelBoleto);
         return textoObraTeatral;

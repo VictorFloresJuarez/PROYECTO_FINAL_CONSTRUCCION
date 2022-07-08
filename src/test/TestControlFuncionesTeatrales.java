@@ -16,8 +16,8 @@ import model.Usuarios;
 import view.VistaFuncionesTeatrales;
 
 /**
- *
- * @author victo
+ *Clase para testear el controlador ControlFuncionesTeatrales. Para ver si muestra los datos correctos en pantalla.
+ * @author Víctor Flores Juárez
  */
 public class TestControlFuncionesTeatrales {
 

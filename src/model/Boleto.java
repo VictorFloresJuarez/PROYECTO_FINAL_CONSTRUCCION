@@ -5,20 +5,26 @@
 package model;
 
 /**
- *
- * @author victo
+ *Clase Boleto, que representa la entidad de un boleto, el cual únicamente es creado durante el proceso de compra.
+ * @author Víctor Flores Juárez
  */
 public class Boleto {
 
     private FuncionTeatral funcionTeatral;
     private int numBoleto;
 
+    /**
+     * Constructor de la clase Boleto, instancia un nuevo boleto.
+     * @param funcionTeatral
+     * @param numBoleto 
+     */
     public Boleto(FuncionTeatral funcionTeatral, int numBoleto) {
         this.funcionTeatral = funcionTeatral;
         this.numBoleto = numBoleto;
     }
 
     /**
+     * Función que devuelve un objeto de tipo FuncionTeatral. Básicamente es la función para la que ese boleto se comprón
      * @return the funcionTeatral
      */
     public FuncionTeatral getFuncionTeatral() {
@@ -26,26 +32,18 @@ public class Boleto {
     }
 
     /**
-     * @param funcionTeatral the funcionTeatral to set
-     */
-    public void setFuncionTeatral(FuncionTeatral funcionTeatral) {
-        this.funcionTeatral = funcionTeatral;
-    }
-
-    /**
+     * Función que devuelve un objeto de tipo entero. Es el número del boleto de la compra total. Ejemplo: si se compran 3 boletos entonces los 3 objetos boleto tendrán estos valores para este atributo: [1, 2, 3].
      * @return the numBoleto
      */
     public int getNumBoleto() {
         return numBoleto;
     }
 
-    /**
-     * @param numBoleto the numBoleto to set
-     */
-    public void setNumBoleto(int numBoleto) {
-        this.numBoleto = numBoleto;
-    }
 
+    /**
+     * Función para imprimir un boleto específico de una compra de boletos.
+     * @return 
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

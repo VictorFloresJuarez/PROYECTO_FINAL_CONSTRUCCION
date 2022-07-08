@@ -18,8 +18,8 @@ import model.Venta;
 import model.Ventas;
 
 /**
- *
- * @author victo
+  *Clase para testear la clase ReporteVenta. Para ver si muestra los datos correctos en consola.
+ * @author Víctor Flores Juárez
  */
 public class TestReporteVenta {
 

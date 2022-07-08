@@ -16,8 +16,8 @@ import model.ObrasTeatrales;
 import view.VistaFuncionesTeatrales;
 
 /**
- *
- * @author victo
+ *Clase ControlFuncionesTeatrales, que funciona como controlador entre el JFrame ViewFuncionesTeatrales y la clase FuncionesTeatrales.
+ * @author Víctor Flores Juárez
  */
 public class ControlFuncionesTeatrales implements ActionListener {
 
@@ -25,7 +25,13 @@ public class ControlFuncionesTeatrales implements ActionListener {
     private FuncionesTeatrales funcionesTeatrales;
     private ObrasTeatrales obrasTeatrales;
     private VistaFuncionesTeatrales vistaFuncionesTeatrales;
-
+    
+    /**
+     * Constructor de la clase ControlFuncionesTeatrales, como todo controlador recibe como parámetro la vista que va a controlar y la clase que representa esa vista.
+     * @param funcionesTeatrales
+     * @param vistaFuncionesTeatrales
+     * @param obrasTeatrales 
+     */
     public ControlFuncionesTeatrales(FuncionesTeatrales funcionesTeatrales, VistaFuncionesTeatrales vistaFuncionesTeatrales, ObrasTeatrales obrasTeatrales) {
         this.obrasTeatrales = obrasTeatrales;
         this.funcionesTeatrales = funcionesTeatrales;
@@ -33,7 +39,10 @@ public class ControlFuncionesTeatrales implements ActionListener {
         this.model = new DefaultTableModel();
     }
     
-    
+    /**
+     * Método que controla la acción realizada por el usuario. Detectando cuando se presiona alguno de los botones.
+     * @param botonPresionado 
+     */
     @Override
     public void actionPerformed(ActionEvent botonPresionado) {
         if (botonPresionado.getSource() == this.vistaFuncionesTeatrales.buttonActualizar) {

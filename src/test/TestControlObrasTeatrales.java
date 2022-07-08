@@ -9,8 +9,8 @@ import model.ObrasTeatrales;
 import view.ViewObrasTeatrales;
 
 /**
- *
- * @author victo
+  *Clase para testear el controlador ControlObrasTeatrales. Para ver si muestra los datos correctos en pantalla.
+ * @author Víctor Flores Juárez
  */
 public class TestControlObrasTeatrales {
 

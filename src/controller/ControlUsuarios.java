@@ -17,15 +17,20 @@ import model.Usuarios;
 import view.ViewRegistroUsuario;
 
 /**
- *
- * @author victo
+ *Clase ControlUsuarios, que funciona para ser el controlador entre el JFrame ViewRegistroUsuario y la clase Usuarios.
+ * @author Víctor Flores Juárez
  */
 public class ControlUsuarios implements ActionListener {
 
     DefaultTableModel model = new DefaultTableModel();
     private Usuarios usuarios;
     private ViewRegistroUsuario vistaUsuarios;
-
+    
+    /**
+     * Constructor de la clase ControlUsuarios, como todo controlador recibe como parámetro la vista que va a controlar y la clase que representa esa vista.
+     * @param usuarios
+     * @param vistaUsuarios 
+     */
     public ControlUsuarios(Usuarios usuarios, ViewRegistroUsuario vistaUsuarios) {
         this.usuarios = usuarios;
         this.vistaUsuarios = vistaUsuarios;
@@ -35,6 +40,10 @@ public class ControlUsuarios implements ActionListener {
         this.model = new DefaultTableModel();
     }
 
+    /**
+     * Método que controla la acción realizada por el usuario. Detectando cuando se presiona alguno de los botones.
+     * @param botonPresionado 
+     */
     @Override
     public void actionPerformed(ActionEvent botonPresionado) {
         if (botonPresionado.getSource() == this.vistaUsuarios.buttonActualizar) {
@@ -100,6 +109,10 @@ public class ControlUsuarios implements ActionListener {
         }
     }
     
+    /**
+     * Método que lista todos los usuarios en una JTable. Recibe como parámetro la JTable creada en el JFrame, osea la tabla que pertenece al objeto vistaUsuarios
+     * @param tabla 
+     */
     public void listar(JTable tabla) {
         Object[] object = new Object[2];
         ArrayList<Usuario> lista = this.usuarios.getUsuarios();

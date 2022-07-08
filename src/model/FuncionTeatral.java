@@ -7,8 +7,8 @@ package model;
 import java.time.*;
 
 /**
- *
- * @author victo
+ *Clase FuncionTeatral, que representa cada función individual registrada en el teatro.
+ * @author Víctor Flores Juárez
  */
 public class FuncionTeatral {
 
@@ -19,13 +19,25 @@ public class FuncionTeatral {
     public FuncionTeatral() {
 
     }
-
+    
+    /**
+     * Constructor de la clase FuncionTeatral, dicho constructor será llamado siempre a través de la clase FuncionesTeatrales
+     * @param obraTeatral
+     * @param fechaPresentacion
+     * @param horaPresentacion 
+     */
     public FuncionTeatral(ObraTeatral obraTeatral, LocalDate fechaPresentacion, LocalTime horaPresentacion) {
         this.obraTeatral = obraTeatral;
         this.fechaPresentacion = fechaPresentacion;
         this.horaPresentacion = horaPresentacion;
     }
 
+    /**
+     * Proceso para modificar una función específica, recibe como parámetro los nuevos datos que tendrá dicha función teatral. 
+     * @param obraTeatral
+     * @param fechaPresentacion
+     * @param horaPresentacion 
+     */
     public void modificarFuncion(ObraTeatral obraTeatral, LocalDate fechaPresentacion, LocalTime horaPresentacion) {
         this.obraTeatral = obraTeatral;
         this.fechaPresentacion = fechaPresentacion;
@@ -33,6 +45,7 @@ public class FuncionTeatral {
     }
 
     /**
+     * Función que retorna un objeto de tipo ObraTeatral.
      * @return the obraTeatral
      */
     public ObraTeatral getObraTeatral() {
@@ -40,40 +53,27 @@ public class FuncionTeatral {
     }
 
     /**
-     * @param obraTeatral the obraTeatral to set
-     */
-    public void setObraTeatral(ObraTeatral obraTeatral) {
-        this.obraTeatral = obraTeatral;
-    }
-
-    /**
+     * Función que retorna un objeto de tipo LocalDate que contiene la fecha en la que dicha función fue registada/actualizada.
      * @return the fechaPresentacion
      */
     public LocalDate getFechaPresentacion() {
         return fechaPresentacion;
     }
 
-    /**
-     * @param fechaPresentacion the fechaPresentacion to set
-     */
-    public void setFechaPresentacion(LocalDate fechaPresentacion) {
-        this.fechaPresentacion = fechaPresentacion;
-    }
 
     /**
+     * Función que retorna un objeto de tipo LocalTime que contiene la hora en la que dicha función fue registada/actualizada.
      * @return the horaPresentacion
      */
     public LocalTime getHoraPresentacion() {
         return horaPresentacion;
     }
 
+    
     /**
-     * @param horaPresentacion the horaPresentacion to set
+     * Función que imprime una función teatral específica.
+     * @return 
      */
-    public void setHoraPresentacion(LocalTime horaPresentacion) {
-        this.horaPresentacion = horaPresentacion;
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

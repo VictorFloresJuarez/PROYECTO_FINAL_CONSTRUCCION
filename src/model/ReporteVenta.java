@@ -7,8 +7,8 @@ package model;
 import java.time.LocalDate;
 
 /**
- *
- * @author victo
+ *Clase ReporteVenta, que representa la entidad de un reporte de venta en un rango de tiempo.
+ * @author Victor Flores Juarez
  */
 public class ReporteVenta {
 
@@ -20,6 +20,12 @@ public class ReporteVenta {
 
     }
 
+    /**
+     * Constructor de las instancias ReporteVenta, recibe como parámetro el rango de días para lo que se requiere el reporte y un objeto Ventas que contiene todas las ventas del teatro
+     * @param diaInicio
+     * @param diaFinal
+     * @param todasLasVentas 
+     */
     public ReporteVenta(LocalDate diaInicio, LocalDate diaFinal, Ventas todasLasVentas) {
         this.diaInicio = diaInicio;
         this.diaFinal = diaFinal;
@@ -27,6 +33,7 @@ public class ReporteVenta {
     }
 
     /**
+     * Función que retorna un objeto de tipo LocalDate que contiene el día del inicio del rango de días.
      * @return the diaInicio
      */
     public LocalDate getDiaInicio() {
@@ -34,13 +41,7 @@ public class ReporteVenta {
     }
 
     /**
-     * @param diaInicio the diaInicio to set
-     */
-    public void setDiaInicio(LocalDate diaInicio) {
-        this.diaInicio = diaInicio;
-    }
-
-    /**
+     * Función que retorna un objeto de tipo LocalDate que contiene el día del final del rango de días.
      * @return the diaFinal
      */
     public LocalDate getDiaFinal() {
@@ -48,28 +49,19 @@ public class ReporteVenta {
     }
 
     /**
-     * @param diaFinal the diaFinal to set
-     */
-    public void setDiaFinal(LocalDate diaFinal) {
-        this.diaFinal = diaFinal;
-    }
-
-    /**
+     * Función que retorna todas las ventas de un determinado período de tiempo
      * @return the ventasTotales
      */
     public Ventas getVentasTotales() {
         return ventasTotales;
     }
 
+
+
     /**
-     * @param ventasTotales the ventasTotales to set
+     * Función que imprime los valores de un reporte de venta en consola
+     * @return 
      */
-    public void setVentasTotales(Ventas ventasTotales) {
-        this.ventasTotales = ventasTotales;
-    }
-
-
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

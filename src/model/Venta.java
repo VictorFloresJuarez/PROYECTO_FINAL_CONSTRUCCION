@@ -9,12 +9,12 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 
 /**
- *
- * @author victo
+ *Clase Venta, que representa la entidad de cada venta única del teatro.
+ * @author Víctor Flores Juárez
  */
 public class Venta {
 
-    private String nombreDelTeatro = "Chachita";
+    private final String nombreDelTeatro = "Chachita";
     private int numVenta;
     private FuncionTeatral funcionTeatral;
     private LocalDate fechaVenta;
@@ -29,6 +29,13 @@ public class Venta {
 
     }
 
+    /**
+     * Constructor para la clase Venta que instancia una venta realizada.
+     * @param numVenta
+     * @param funcionTeatral
+     * @param numBoletosVendidos
+     * @param montoEntregado 
+     */
     public Venta(int numVenta, FuncionTeatral funcionTeatral, int numBoletosVendidos, float montoEntregado) {
         this.numVenta = numVenta;
         this.funcionTeatral = funcionTeatral;
@@ -41,12 +48,24 @@ public class Venta {
         this.cambio = this.montoEntregado - this.totalDeVenta;
     }
 
+    /**
+     * Método que calcula el total de la venta.
+     * @param funcionTeatral
+     * @param numBoletosVendidos
+     * @return 
+     */
     public float calcularTotalVenta(FuncionTeatral funcionTeatral, int numBoletosVendidos) {
         ObraTeatral obraTeatral = funcionTeatral.getObraTeatral();
         float precioDelBoleto = obraTeatral.getPrecioDelBoleto();
         return precioDelBoleto * numBoletosVendidos;
     }
 
+    /**
+     * Método que inicializa los boletos específicos de una venta, para asignarles numDeBoleto y la función teatral a la que hacen referencia
+     * @param funcionTeatral
+     * @param numBoletosVendidos
+     * @return 
+     */
     public ArrayList<Boleto> inicializarBoletos(FuncionTeatral funcionTeatral, int numBoletosVendidos) {
         ArrayList<Boleto> boletos = new ArrayList<Boleto>();
         for (int i = 0; i < numBoletosVendidos; i++) {
@@ -56,145 +75,99 @@ public class Venta {
     }
 
     /**
+     * Función que retorna un objeto String con el nombre del teatro.
      * @return the nombreDelTeatro
      */
     public String getNombreDelTeatro() {
         return nombreDelTeatro;
     }
 
-    /**
-     * @param nombreDelTeatro the nombreDelTeatro to set
-     */
-    public void setNombreDelTeatro(String nombreDelTeatro) {
-        this.nombreDelTeatro = nombreDelTeatro;
-    }
 
     /**
+     * Función que retorna un entero que representa el número de la venta de todo el teatro
      * @return the numVenta
      */
     public int getNumVenta() {
         return numVenta;
     }
 
-    /**
-     * @param numVenta the numVenta to set
-     */
-    public void setNumVenta(int numVenta) {
-        this.numVenta = numVenta;
-    }
 
     /**
+     * Función que retorna un objeto de tipo FuncionTeatral que representa la obra para la que se hizo la compra
      * @return the funcionTeatral
      */
     public FuncionTeatral getFuncionTeatral() {
         return funcionTeatral;
     }
 
-    /**
-     * @param funcionTeatral the funcionTeatral to set
-     */
-    public void setFuncionTeatral(FuncionTeatral funcionTeatral) {
-        this.funcionTeatral = funcionTeatral;
-    }
 
     /**
+     * Función que retorna un objeto de tipo LocalDate que representa la fecha en la que se realizó la compra.
      * @return the fechaVenta
      */
     public LocalDate getFechaVenta() {
         return fechaVenta;
     }
 
-    /**
-     * @param fechaVenta the fechaVenta to set
-     */
-    public void setFechaVenta(LocalDate fechaVenta) {
-        this.fechaVenta = fechaVenta;
-    }
 
     /**
+     * Función que retorna un objeto de tipo LocalTime que representa la hora a la que se realizó la compra.
      * @return the horaVenta
      */
     public LocalTime getHoraVenta() {
         return horaVenta;
     }
 
-    /**
-     * @param horaVenta the horaVenta to set
-     */
-    public void setHoraVenta(LocalTime horaVenta) {
-        this.horaVenta = horaVenta;
-    }
 
     /**
+     * Función que retorna un entero que representa la cantidad de boletos que se vendieron en una sola venta
      * @return the numBoletosVendidos
      */
     public int getNumBoletosVendidos() {
         return numBoletosVendidos;
     }
 
-    /**
-     * @param numBoletosVendidos the numBoletosVendidos to set
-     */
-    public void setNumBoletosVendidos(int numBoletosVendidos) {
-        this.numBoletosVendidos = numBoletosVendidos;
-    }
 
     /**
+     * Función que retorna un flotante que representa el total de la venta.
      * @return the totalDeVenta
      */
     public float getTotalDeVenta() {
         return totalDeVenta;
     }
 
-    /**
-     * @param totalDeVenta the totalDeVenta to set
-     */
-    public void setTotalDeVenta(float totalDeVenta) {
-        this.totalDeVenta = totalDeVenta;
-    }
 
     /**
+     * Función que retorna un flotante que representa el monto entregado en una venta.
      * @return the montoEntregado
      */
     public float getMontoEntregado() {
         return montoEntregado;
     }
 
-    /**
-     * @param montoEntregado the montoEntregado to set
-     */
-    public void setMontoEntregado(float montoEntregado) {
-        this.montoEntregado = montoEntregado;
-    }
 
     /**
+     * Función que retornar un flotante que representa el cambio de la venta.
      * @return the cambio
      */
     public float getCambio() {
         return cambio;
     }
 
-    /**
-     * @param cambio the cambio to set
-     */
-    public void setCambio(float cambio) {
-        this.cambio = cambio;
-    }
 
     /**
+     * Función que retorna una lista de boletos con todos los boletos contenidos en una sola venta
      * @return the boletos
      */
     public ArrayList<Boleto> getBoletos() {
         return boletos;
     }
 
-    /**
-     * @param boletos the boletos to set
-     */
-    public void setBoletos(ArrayList<Boleto> boletos) {
-        this.boletos = boletos;
-    }
 
+    /**
+     * Función que escribe en consola todos los datos de una venta.
+     * @return 
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

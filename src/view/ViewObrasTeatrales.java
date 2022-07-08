@@ -5,8 +5,8 @@
 package view;
 
 /**
- *
- * @author victo
+ *Vista para la clase ObrasTeatrales, la interacción entre estas se da mediante ControlObrasTeatrales. Por lo que el código esta clase no debe ser modificada bajo ninguna circunstancia.
+ * @author Víctor Flores Juárez
  */
 public class ViewObrasTeatrales extends javax.swing.JFrame {
 

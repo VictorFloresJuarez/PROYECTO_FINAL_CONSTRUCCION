@@ -16,15 +16,20 @@ import model.Usuario;
 import view.ViewObrasTeatrales;
 
 /**
- *
- * @author victo
+ *Clase ControlObrasTeatrales, que sirve para ser el controlador entre el JFrame ViewObrasTeatrales y la clase ObrasTeatrales.
+ * @author Víctor Flores Juárez
  */
 public class ControlObrasTeatrales implements ActionListener {
 
     DefaultTableModel model = new DefaultTableModel();
     private ObrasTeatrales obrasTeatrales;
     private ViewObrasTeatrales vistaObrasTeatrales;
-
+    
+    /**
+     * Constructor de la clase ControlObrasTeatrales, como todo controlador recibe como parámetro la vista que va a controlar y la clase que representa esa vista.
+     * @param obrasTeatrales
+     * @param vistaObrasTeatrales 
+     */
     public ControlObrasTeatrales(ObrasTeatrales obrasTeatrales, ViewObrasTeatrales vistaObrasTeatrales) {
         this.obrasTeatrales = obrasTeatrales;
         this.vistaObrasTeatrales = vistaObrasTeatrales;
@@ -33,7 +38,11 @@ public class ControlObrasTeatrales implements ActionListener {
         this.vistaObrasTeatrales.buttonEliminar.addActionListener(this);
         this.model = new DefaultTableModel();
     }
-
+    
+    /**
+     * Método que controla la acción realizada por el usuario. Detectando cuando se presiona alguno de los botones.
+     * @param botonPresionado 
+     */
     @Override
     public void actionPerformed(ActionEvent botonPresionado) {
         if (botonPresionado.getSource() == this.vistaObrasTeatrales.buttonActualizarObra) {
@@ -138,6 +147,10 @@ public class ControlObrasTeatrales implements ActionListener {
 
     }
 
+    /**
+     * Método que lista todas las obras teatrales en una JTable. Recibe como parámetro la JTable creada en el JFrame, osea la tabla que pertenece al objeto vistaObrasTeatrales.
+     * @param tabla 
+     */
     public void listar(JTable tabla) {
         Object[] object = new Object[4];
         ArrayList<ObraTeatral> lista = this.obrasTeatrales.getObrasTeatrales();
