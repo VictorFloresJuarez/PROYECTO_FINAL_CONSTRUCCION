@@ -6,10 +6,18 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
 import model.ObraTeatral;
 import model.ObrasTeatrales;
+import model.ModeloTablasVistasObrasTeatrales;
 import model.Usuario;
+import model.Usuarios;
+import test.TableAddTest;
 import view.ViewObrasTeatrales;
 
 /**
@@ -27,6 +35,26 @@ public class ControlObrasTeatrales implements ActionListener {
         this.vistaObrasTeatrales.buttonActualizarObra.addActionListener(this);
         this.vistaObrasTeatrales.buttonAgregarObra.addActionListener(this);
         this.vistaObrasTeatrales.buttonEliminar.addActionListener(this);
+        this.vistaObrasTeatrales.buttonListarObras.addActionListener(this);
+        //dummy objects
+        Usuarios usuarios = new Usuarios();
+        System.out.println("--------------------- USUARIO AGREGADO -----------------------");
+        usuarios.agregarUsuario("Victor", "Flores Juarez", "curpDeVictor", "Pachas", "contraseniaVictor");
+        usuarios.agregarUsuario("Juan", "Ramirez", "curpDeJuan", "PepeEl", "contraseniaJuan");
+        usuarios.agregarUsuario("Emmanuel", "FJuarez", "curpEmmanuel", "emmaUser", "contraseniaEmmanuel");
+        System.out.println("------------------------- USUARIO MODIFICADO --------------------------");
+        usuarios.modificarUsuario("Pachas", "VictorM", "FloresM", "curpDeVictorModif", "PachasModificado", "contraseniaVictorM");
+        usuarios.modificarUsuario("emmaUser", "EmmanuelM", "FJuarezM", "curpEmmanuelM", "emmaUserM", "contraseniaEmmanuelM");
+        usuarios.imprimirUsuarios();
+
+        Usuario pachas = usuarios.getUsuario("PachasModificado");
+        Usuario emmaUser = usuarios.getUsuario("emmaUserM");
+        
+        obrasTeatrales.agregarObra("Dark Souls", "RPG", "Resumen de la obra", 46512, pachas, emmaUser, (float) 45.34);
+        obrasTeatrales.agregarObra("Dark Souls 2 ", "RPG 2 ", "Resumen de la obra 2", 46512, emmaUser, pachas, (float) 30.4);
+        
+        //fin dummy objects
+        
     }
 
     @Override
@@ -125,6 +153,11 @@ public class ControlObrasTeatrales implements ActionListener {
         }
 
         if (botonPresionado.getSource() == this.vistaObrasTeatrales.buttonListarObras) {
+            System.out.println("---------Desplegando Obras Teatrales en tabla---------");
+            ModeloTablasVistasObrasTeatrales tableModel= new ModeloTablasVistasObrasTeatrales(obrasTeatrales.getObrasTeatrales());
+            vistaObrasTeatrales.tablaObras.setModel(tableModel);
+            
+            
 
         }
     }
