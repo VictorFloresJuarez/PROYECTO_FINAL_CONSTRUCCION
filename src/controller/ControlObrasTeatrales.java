@@ -36,8 +36,14 @@ public class ControlObrasTeatrales implements ActionListener {
             String nuevoNombreObra = this.vistaObrasTeatrales.txtNombreDeLaObra.getText();
             String nuevoGenero = this.vistaObrasTeatrales.txtGenero.getText();
             String nuevoResumen = this.vistaObrasTeatrales.txtResumen.getText();
-            int nuevaDuracionEnMin = Integer.parseInt(this.vistaObrasTeatrales.txtDuracionEnMin.getText());
-            float precioDelBoleto = Float.parseFloat(this.vistaObrasTeatrales.txtPrecioDelBoleto.getText());
+            int nuevaDuracionEnMin = 0;
+            float precioDelBoleto = 0;
+            try {
+                nuevaDuracionEnMin = Integer.parseInt(this.vistaObrasTeatrales.txtDuracionEnMin.getText());
+                precioDelBoleto = Float.parseFloat(this.vistaObrasTeatrales.txtPrecioDelBoleto.getText());
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Ingrese valores válidos para el precio del boleto y la duración");
+            }
 
             String nuevoNombrePrimerActor = this.vistaObrasTeatrales.txtNombrePrimerActor.getText();
             String nuevoNombreSegundoActor = this.vistaObrasTeatrales.txtNombreSegundoActor.getText();
@@ -53,10 +59,10 @@ public class ControlObrasTeatrales implements ActionListener {
             Usuario primerActor = new Usuario(nuevoNombrePrimerActor, nuevoApellidoPrimerActor, nuevaCURPPrimerActor, nuevoNombreDeUsuarioPrimerActor, nuevaContraseniaPrimerActor);
             Usuario segundoActor = new Usuario(nuevoNombreSegundoActor, nuevoApellidoSegundoActor, nuevaCURPSegundoActor, nuevoNombreDeUsuarioSegundoActor, nuevaContraseniaSegundoActor);
 
-            Boolean nuevosParametrosValidos = (!nuevoNombreObra.isEmpty()) && (!nuevoGenero.isEmpty()) && (!nuevoResumen.isEmpty()) && (!this.vistaObrasTeatrales.txtDuracionEnMin.getText().isEmpty()) && (this.vistaObrasTeatrales.txtPrecioDelBoleto.getText().isEmpty())
+            Boolean nuevosParametrosValidos = (!nuevoNombreObra.isEmpty()) && (!nuevoGenero.isEmpty()) && (!nuevoResumen.isEmpty()) && (!this.vistaObrasTeatrales.txtDuracionEnMin.getText().isEmpty()) && (!this.vistaObrasTeatrales.txtPrecioDelBoleto.getText().isEmpty())
                     && (!nuevoNombrePrimerActor.isEmpty()) && (!nuevoNombreDeUsuarioSegundoActor.isEmpty()) && (!nuevoApellidoPrimerActor.isEmpty()) && (!nuevoApellidoSegundoActor.isEmpty()) && (!nuevaCURPPrimerActor.isEmpty()) && (!nuevaCURPSegundoActor.isEmpty());
             if (nuevosParametrosValidos) {
-                ObraTeatral obraPorCambiar = this.obrasTeatrales.getObraTeatral(nuevoNombreObra);
+                ObraTeatral obraPorCambiar = this.obrasTeatrales.getObraTeatral(obraAModificar);
                 Boolean obraExiste = obraPorCambiar != null;
                 if (obraExiste) {
                     this.obrasTeatrales.modificarObra(obraAModificar, nuevoNombreObra, nuevoGenero, nuevoResumen, nuevaDuracionEnMin, primerActor, segundoActor, precioDelBoleto);
@@ -75,6 +81,7 @@ public class ControlObrasTeatrales implements ActionListener {
             Boolean obraExiste = obraTeatral != null;
             if (obraExiste) {
                 this.obrasTeatrales.eliminarObra(obraAEliminar);
+                JOptionPane.showMessageDialog(null, "Obra eliminada correctamente");
             } else {
                 JOptionPane.showMessageDialog(null, "La obra no existe");
             }
@@ -84,8 +91,14 @@ public class ControlObrasTeatrales implements ActionListener {
             String nuevoNombreObra = this.vistaObrasTeatrales.txtNombreDeLaObra.getText();
             String nuevoGenero = this.vistaObrasTeatrales.txtGenero.getText();
             String nuevoResumen = this.vistaObrasTeatrales.txtResumen.getText();
-            int nuevaDuracionEnMin = Integer.parseInt(this.vistaObrasTeatrales.txtDuracionEnMin.getText());
-            float precioDelBoleto = Float.parseFloat(this.vistaObrasTeatrales.txtPrecioDelBoleto.getText());
+            int nuevaDuracionEnMin = 0;
+            float precioDelBoleto = 0;
+            try {
+                nuevaDuracionEnMin = Integer.parseInt(this.vistaObrasTeatrales.txtDuracionEnMin.getText());
+                precioDelBoleto = Float.parseFloat(this.vistaObrasTeatrales.txtPrecioDelBoleto.getText());
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Ingrese valores válidos para el precio del boleto y la duración");
+            }
 
             String nuevoNombrePrimerActor = this.vistaObrasTeatrales.txtNombrePrimerActor.getText();
             String nuevoNombreSegundoActor = this.vistaObrasTeatrales.txtNombreSegundoActor.getText();
@@ -101,15 +114,16 @@ public class ControlObrasTeatrales implements ActionListener {
             Usuario primerActor = new Usuario(nuevoNombrePrimerActor, nuevoApellidoPrimerActor, nuevaCURPPrimerActor, nuevoNombreDeUsuarioPrimerActor, nuevaContraseniaPrimerActor);
             Usuario segundoActor = new Usuario(nuevoNombreSegundoActor, nuevoApellidoSegundoActor, nuevaCURPSegundoActor, nuevoNombreDeUsuarioSegundoActor, nuevaContraseniaSegundoActor);
 
-            Boolean nuevosParametrosValidos = (!nuevoNombreObra.isEmpty()) && (!nuevoGenero.isEmpty()) && (!nuevoResumen.isEmpty()) && (!this.vistaObrasTeatrales.txtDuracionEnMin.getText().isEmpty()) && (this.vistaObrasTeatrales.txtPrecioDelBoleto.getText().isEmpty())
+            Boolean nuevosParametrosValidos = (!nuevoNombreObra.isEmpty()) && (!nuevoGenero.isEmpty()) && (!nuevoResumen.isEmpty()) && (!this.vistaObrasTeatrales.txtDuracionEnMin.getText().isEmpty()) && (!this.vistaObrasTeatrales.txtPrecioDelBoleto.getText().isEmpty())
                     && (!nuevoNombrePrimerActor.isEmpty()) && (!nuevoNombreDeUsuarioSegundoActor.isEmpty()) && (!nuevoApellidoPrimerActor.isEmpty()) && (!nuevoApellidoSegundoActor.isEmpty()) && (!nuevaCURPPrimerActor.isEmpty()) && (!nuevaCURPSegundoActor.isEmpty());
             if (nuevosParametrosValidos) {
                 this.obrasTeatrales.agregarObra(nuevoNombreObra, nuevoGenero, nuevoResumen, nuevaDuracionEnMin, primerActor, segundoActor, precioDelBoleto);
+                JOptionPane.showMessageDialog(null, "Obra creada exitosamente");
             } else {
                 JOptionPane.showMessageDialog(null, "Debe ingresar TODOS los datos");
             }
         }
-        
+
         if (botonPresionado.getSource() == this.vistaObrasTeatrales.buttonListarObras) {
 
         }

@@ -230,7 +230,7 @@ public class ViewRegistroUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonListarUsuariosActionPerformed
 
-    public void getListaUsuarios(ArrayList<String> listaNombreUsuarios, ArrayList<String> listaNombres){
+    public void imprimirListaDeUsuarios(ArrayList<String> listaNombreUsuarios, ArrayList<String> listaNombres){
         model.addColumn("Nombre de usuario", ""); //PENDIENTE VER TODOS LOS USUARIOS
     }
     /**
