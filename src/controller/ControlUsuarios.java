@@ -6,8 +6,11 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import model.Usuario;
 import model.Usuarios;
@@ -19,10 +22,9 @@ import view.ViewRegistroUsuario;
  */
 public class ControlUsuarios implements ActionListener {
 
-    DefaultTableModel model;
+    DefaultTableModel model = new DefaultTableModel();
     private Usuarios usuarios;
     private ViewRegistroUsuario vistaUsuarios;
-    
 
     public ControlUsuarios(Usuarios usuarios, ViewRegistroUsuario vistaUsuarios) {
         this.usuarios = usuarios;
@@ -48,7 +50,9 @@ public class ControlUsuarios implements ActionListener {
                 if (usuarioPorModificar != null) {
                     if (usuarioPorModificar.getContrasena().equals(contrasenia)) {
                         this.usuarios.modificarUsuario(usuarioPorActualizar, nombre, apellido, CURP, nombreDeUsuario, contrasenia);
-                        JOptionPane.showMessageDialog(null, "Usuario actualizado exitosamente");
+                        Usuario usuarioActualizado = this.usuarios.getUsuario(usuarioPorActualizar);
+                        String textoUsuario = usuarioActualizado.getTexto();
+                        JOptionPane.showMessageDialog(null, "Usuario actualizado exitosamente, NUEVOS DATOS:        " + textoUsuario);
                     } else {
                         JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
                     }
@@ -67,7 +71,8 @@ public class ControlUsuarios implements ActionListener {
             if (usuarioAEliminar != null) {
                 if (usuarioAEliminar.getContrasena().equals(contrasenia) && usuarioAEliminar != null) {
                     this.usuarios.eliminarUsuario(usuarioPorEliminar);
-                    JOptionPane.showMessageDialog(null, "Usuario eliminado exitosamente.");
+                    String textoDelUsuario = usuarioAEliminar.getTexto();
+                    JOptionPane.showMessageDialog(null, "Usuario eliminado exitosamente:    " + textoDelUsuario);
                 } else {
                     JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
                 }
@@ -85,22 +90,26 @@ public class ControlUsuarios implements ActionListener {
             Boolean nuevoUsuarioValido = (!nombre.isEmpty()) && (!apellido.isEmpty()) && (!CURP.isEmpty()) && (!nombreDeUsuario.isEmpty()) && (!contrasenia.isEmpty());
             if (nuevoUsuarioValido) {
                 this.usuarios.agregarUsuario(nombre, apellido, CURP, nombreDeUsuario, contrasenia);
-                JOptionPane.showMessageDialog(null, "Usuario agregado exitosamente.");
+                Usuario usuarioAAgregar = this.usuarios.getUsuario(nombreDeUsuario);
+                String textoDelUsuario = usuarioAAgregar.getTexto();
+                JOptionPane.showMessageDialog(null, "Usuario agregado exitosamente. " + textoDelUsuario);
+                listar(this.vistaUsuarios.tablaUsuarios);
             } else {
                 JOptionPane.showMessageDialog(null, "Necesita ingresar TODOS los campos");
             }
         }
-        
-        /*
-        if (botonPresionado.getSource() == this.vistaUsuarios.buttonListarUsuarios) {
-            Boolean listaEstaVacia = this.usuarios.getUsuarios().isEmpty();
-            if (!listaEstaVacia) {
-                for (Usuario usuarioActual : this.usuarios.getUsuarios()) {
-                    model.addRow(this.usuarios.getUsuarios().toArray());
-                }
-                this.vistaUsuarios.tablaUsuarios.setModel(this.model);
-            }
-        }*/
-
+    }
+    
+    public void listar(JTable tabla) {
+        Object[] object = new Object[2];
+        ArrayList<Usuario> lista = this.usuarios.getUsuarios();
+        Usuario usuarioActual = null;
+        for (int i = 0; i < lista.size(); i++) {
+            usuarioActual = lista.get(i);
+            object[0] = usuarioActual.getNombreDeUsuario();
+            object[1] = usuarioActual.getNombre();
+            model.addRow(object);
+        }
+        this.vistaUsuarios.tablaUsuarios.setModel(model);
     }
 }

@@ -118,5 +118,10 @@ public class Usuario {
         sb.append('}');
         return sb.toString();
     }
+    
+    public String getTexto(){
+        String textoDevolver = "Nombre de usuario:       " + this.nombreDeUsuario + ",      nombre:         " + this.nombre + ",        apellido        " + this.apellido + ",          CURP:           " + this.CURP ;
+        return textoDevolver;
+    }
 
 }

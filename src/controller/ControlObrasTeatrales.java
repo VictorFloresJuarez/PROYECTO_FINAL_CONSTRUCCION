@@ -123,9 +123,5 @@ public class ControlObrasTeatrales implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Debe ingresar TODOS los datos");
             }
         }
-
-        if (botonPresionado.getSource() == this.vistaObrasTeatrales.buttonListarObras) {
-
-        }
     }
 }
