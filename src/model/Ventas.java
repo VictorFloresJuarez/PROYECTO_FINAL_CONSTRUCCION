@@ -31,7 +31,7 @@ public class Ventas {
         Ventas ventasEspecificas = new Ventas();
         Boolean estaEnRango;
         for (Venta venta : this.ventas){
-            estaEnRango = (venta.getFechaVenta().isAfter(fechaVentaDesde) && venta.getFechaVenta().isBefore(fechaVentaHasta) ) || venta.getFechaVenta().equals(fechaVentaDesde) || venta.getFechaVenta().equals(fechaVentaHasta);
+            estaEnRango = (venta.getFechaVenta().isAfter(fechaVentaDesde) && venta.getFechaVenta().isBefore(fechaVentaHasta) );
             if (estaEnRango){
                 ventasEspecificas.agregarVenta(venta);
             }
