@@ -48,6 +48,7 @@ public class ViewRegistroUsuario extends javax.swing.JFrame {
         txtUsuarioModificarEliminar = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaUsuarios = new javax.swing.JTable();
+        buttonListarUsuarios = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -122,6 +123,9 @@ public class ViewRegistroUsuario extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tablaUsuarios);
 
+        buttonListarUsuarios.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        buttonListarUsuarios.setText("Listar Usuarios");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -158,7 +162,9 @@ public class ViewRegistroUsuario extends javax.swing.JFrame {
                             .addComponent(txtNombreDeUsuario)
                             .addComponent(txtContrasenia))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonListarUsuarios, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
@@ -169,7 +175,8 @@ public class ViewRegistroUsuario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(txtUsuarioModificarEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtUsuarioModificarEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonListarUsuarios))
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -223,6 +230,7 @@ public class ViewRegistroUsuario extends javax.swing.JFrame {
     public javax.swing.JButton buttonActualizar;
     public javax.swing.JButton buttonEliminar;
     public javax.swing.JButton buttonGuardar;
+    public javax.swing.JButton buttonListarUsuarios;
     public javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel2;
     public javax.swing.JLabel jLabel3;

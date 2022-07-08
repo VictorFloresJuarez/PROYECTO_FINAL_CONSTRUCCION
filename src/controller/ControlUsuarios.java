@@ -59,7 +59,7 @@ public class ControlUsuarios implements ActionListener {
                 if (usuarioPorModificar != null) {
                     if (usuarioPorModificar.getContrasena().equals(contrasenia)) {
                         this.usuarios.modificarUsuario(usuarioPorActualizar, nombre, apellido, CURP, nombreDeUsuario, contrasenia);
-                        Usuario usuarioActualizado = this.usuarios.getUsuario(usuarioPorActualizar);
+                        Usuario usuarioActualizado = this.usuarios.getUsuario(nombreDeUsuario);
                         String textoUsuario = usuarioActualizado.getTexto();
                         JOptionPane.showMessageDialog(null, "Usuario actualizado exitosamente, NUEVOS DATOS:        " + textoUsuario);
                     } else {
@@ -102,7 +102,9 @@ public class ControlUsuarios implements ActionListener {
                 Usuario usuarioAAgregar = this.usuarios.getUsuario(nombreDeUsuario);
                 String textoDelUsuario = usuarioAAgregar.getTexto();
                 JOptionPane.showMessageDialog(null, "Usuario agregado exitosamente. " + textoDelUsuario);
+                
                 listar(this.vistaUsuarios.tablaUsuarios);
+                
             } else {
                 JOptionPane.showMessageDialog(null, "Necesita ingresar TODOS los campos");
             }
