@@ -6,24 +6,24 @@ import java.util.LinkedList;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 
-public class ModeloTablasVistasObrasTeatrales extends AbstractTableModel{
-	//clase utilizada por el controlador de la vista de OBRAS teatrales para la creacion de la tabla
+public class ModeloTablasVistasFuncionesTeatrales extends AbstractTableModel{
+	//clase utilizada por el controlador de la vista de FUNCIONES teatrales para la creacion de la tabla
 	
 	protected static final String COLUMN_NAMES[] = {
-	        "Nombre de la obra", "G\u00E9nero", "Resumen", "Duraci\\u00F3n"
+	        "Nombre de la obra", "Fecha de la obra", "Hora de la obra"
 	    };
 	
-	private ArrayList<ObraTeatral> obrasTeatrales;
+	private ArrayList<FuncionTeatral> funcionesTeatrales;
 	
-	public ModeloTablasVistasObrasTeatrales(ArrayList<ObraTeatral> obrasTeatrales) {
-		this.obrasTeatrales = new ArrayList<ObraTeatral>(obrasTeatrales);
+	public ModeloTablasVistasFuncionesTeatrales(ArrayList<FuncionTeatral> obrasTeatrales) {
+		this.funcionesTeatrales = new ArrayList<FuncionTeatral>(obrasTeatrales);
 	}
 	
 
 	@Override
 	public int getRowCount() {
 		// TODO Auto-generated method stub
-		return obrasTeatrales.size();
+		return funcionesTeatrales.size();
 	}
 
 	@Override
@@ -35,12 +35,11 @@ public class ModeloTablasVistasObrasTeatrales extends AbstractTableModel{
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		// TODO Auto-generated method stub
-		ObraTeatral obraTeatral=obrasTeatrales.get(rowIndex);
+		FuncionTeatral funcionTeatral=funcionesTeatrales.get(rowIndex);
 		switch (columnIndex) {
-		case 0: return obraTeatral.getNombre();
-		case 1: return obraTeatral.getGenero();
-		case 2: return obraTeatral.getResumen();
-		case 3: return obraTeatral.getDuracionEnMin();
+		case 0: return funcionTeatral.getObraTeatral().getNombre();
+		case 1: return funcionTeatral.getFechaPresentacion();
+		case 2: return funcionTeatral.getHoraPresentacion();
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + columnIndex);
 		}
@@ -49,9 +48,8 @@ public class ModeloTablasVistasObrasTeatrales extends AbstractTableModel{
 	public String getColumnName(int column) {
 		switch(column) {
 		case 0:return "Nombre de la Obra";
-		case 1: return "G\\u00E9nero";
-		case 2: return "Resumen";
-		case 3: return "Duraci\u00F3n";
+		case 1: return "Fecha de la obra";
+		case 2: return "Hora de la obra";
 		default: 
 			throw new IllegalArgumentException("Unexpected value: " + column);
 		}
